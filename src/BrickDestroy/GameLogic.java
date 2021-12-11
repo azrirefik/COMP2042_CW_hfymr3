@@ -273,8 +273,10 @@ public class GameLogic {
     }
 
     public void nextLevel(){
-        bricks = levels[level++];
-        this.brickCount = bricks.length;
+        if (hasLevel()) {
+            bricks = levels[level++];
+            this.brickCount = bricks.length;
+        }
     }
 
     public boolean hasLevel(){

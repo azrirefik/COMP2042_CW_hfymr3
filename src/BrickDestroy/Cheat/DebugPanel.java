@@ -46,7 +46,7 @@ public class DebugPanel extends JPanel {
 
         initialize();
 
-        skipLevel = makeButton("Skip Level",e -> { if (gameLogic.getLevel() < GameLogic.LEVELS_COUNT) { gameLogic.nextLevel(); } } );
+        skipLevel = makeButton("Skip Level",e -> gameLogic.nextLevel());
         resetBalls = makeButton("Reset Balls",e -> gameLogic.resetBallCount());
 
         ballXSpeed = makeSlider(-4,4,e -> gameLogic.setBallXSpeed(ballXSpeed.getValue()));
