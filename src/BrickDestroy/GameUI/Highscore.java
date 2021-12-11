@@ -16,12 +16,10 @@ public class Highscore {
     private final int MAX_HIGHSCORE = 10;
     ArrayList<Integer> scores;
 
-    private JFrame owner;
     private JDialog highscorePanel;
     private JLabel[] panelItem;
 
-    public Highscore(JFrame owner) {
-        this.owner = owner;
+    public Highscore() {
         loadScores();
         createPanel();
     }

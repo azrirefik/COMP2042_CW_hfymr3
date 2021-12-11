@@ -76,7 +76,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         keyFont = new Font(Theme.font,Font.PLAIN,16);
         this.initialize();
         message = "";
-        gameLogic = new GameLogic(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430), owner);
+        gameLogic = new GameLogic(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
         gameLogic.showHighscores();
 
         debugConsole = new DebugConsole(owner, gameLogic,this);

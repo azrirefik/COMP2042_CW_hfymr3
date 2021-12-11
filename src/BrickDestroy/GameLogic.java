@@ -52,7 +52,7 @@ public class GameLogic {
     private int score;
     private Highscore highscore;
 
-    public GameLogic(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos, JFrame owner){
+    public GameLogic(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
 
@@ -80,7 +80,7 @@ public class GameLogic {
 
         area = drawArea;
 
-        highscore = new Highscore(owner);
+        highscore = new Highscore();
     }
 
     public void gameReset () {
