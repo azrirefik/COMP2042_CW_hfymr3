@@ -15,7 +15,11 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package BrickDestroy.Cheat;
+
+import BrickDestroy.GameElement.Ball;
+import BrickDestroy.GameLogic;
+import BrickDestroy.GameUI.GameBoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,17 +34,17 @@ public class DebugConsole extends JDialog implements WindowListener{
     private JFrame owner;
     private DebugPanel debugPanel;
     private GameBoard gameBoard;
-    private Wall wall;
+    private GameLogic gameLogic;
 
 
-    public DebugConsole(JFrame owner,Wall wall,GameBoard gameBoard){
+    public DebugConsole(JFrame owner, GameLogic gameLogic, GameBoard gameBoard){
 
-        this.wall = wall;
+        this.gameLogic = gameLogic;
         this.owner = owner;
         this.gameBoard = gameBoard;
         initialize();
 
-        debugPanel = new DebugPanel(wall);
+        debugPanel = new DebugPanel(gameLogic);
         this.add(debugPanel,BorderLayout.CENTER);
 
 
@@ -92,7 +96,7 @@ public class DebugConsole extends JDialog implements WindowListener{
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();
-        Ball b = wall.ball;
+        Ball b = gameLogic.ball;
         debugPanel.setValues(b.getSpeedX(),b.getSpeedY());
     }
 

@@ -15,14 +15,16 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package BrickDestroy;
+
+import BrickDestroy.GameElement.*;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
 
-public class Wall {
+public class GameLogic {
 
     private static final int LEVELS_COUNT = 4;
 
@@ -33,9 +35,9 @@ public class Wall {
     private Random rnd;
     private Rectangle area;
 
-    Brick[] bricks;
-    Ball ball;
-    Player player;
+    public Brick[] bricks;
+    public Ball ball;
+    public Player player;
 
     private Brick[][] levels;
     private int level;
@@ -45,7 +47,7 @@ public class Wall {
     private int ballCount;
     private boolean ballLost;
 
-    public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
+    public GameLogic(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
 

@@ -15,7 +15,9 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package BrickDestroy.GameUI;
+
+import BrickDestroy.GameUI.GameFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -71,7 +73,6 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         this.addMouseMotionListener(this);
 
         this.owner = owner;
-
 
 
         menuFace = new Rectangle(new Point(0,0),area);

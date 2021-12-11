@@ -1,4 +1,4 @@
-package test;
+package BrickDestroy.GameElement;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;

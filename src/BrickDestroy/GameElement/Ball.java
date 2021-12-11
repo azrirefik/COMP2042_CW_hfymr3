@@ -1,4 +1,4 @@
-package test;
+package BrickDestroy.GameElement;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -14,10 +14,10 @@ abstract public class Ball {
 
     private Point2D center;
 
-    Point2D up;
-    Point2D down;
-    Point2D left;
-    Point2D right;
+    public Point2D up;
+    public Point2D down;
+    public Point2D left;
+    public Point2D right;
 
     private Color border;
     private Color inner;

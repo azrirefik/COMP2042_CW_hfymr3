@@ -15,12 +15,14 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package BrickDestroy;
+
+import BrickDestroy.GameUI.GameFrame;
 
 import java.awt.*;
 
 
-public class GraphicsMain {
+public class Main {
 
     public static void main(String[] args){
         EventQueue.invokeLater(() -> new GameFrame().initialize());
