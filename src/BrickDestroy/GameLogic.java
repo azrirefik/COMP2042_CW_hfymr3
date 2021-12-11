@@ -77,6 +77,15 @@ public class GameLogic {
 
     }
 
+    public void gameReset () {
+        actorReset();
+        wallReset();
+        level = 0;
+        bricks = levels[level++];
+        this.brickCount = bricks.length;
+        ballCount = 3;
+    }
+
     private Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
@@ -242,7 +251,7 @@ public class GameLogic {
         return ballLost;
     }
 
-    public void ballReset(){
+    public void actorReset(){
         player.moveTo(startPoint);
         ball.moveTo(startPoint);
         int speedX,speedY;
@@ -261,7 +270,6 @@ public class GameLogic {
         for(Brick b : bricks)
             b.repair();
         brickCount = bricks.length;
-        ballCount = 3;
     }
 
     public boolean ballEnd(){

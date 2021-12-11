@@ -91,15 +91,18 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 if(gameLogic.ballEnd()){
                     gameLogic.wallReset();
                     message = "Game over";
+                    gameLogic.gameReset();
+                } else {
+                    gameLogic.actorReset();
+                    message = String.format("Level:%d  Bricks:%d  Balls:%d", gameLogic.getLevel(), gameLogic.getBrickCount(), gameLogic.getBallCount());
                 }
-                gameLogic.ballReset();
                 gameTimer.stop();
             }
             else if(gameLogic.isDone()){
                 if(gameLogic.hasLevel()){
                     message = "Go to Next Level";
                     gameTimer.stop();
-                    gameLogic.ballReset();
+                    gameLogic.actorReset();
                     gameLogic.wallReset();
                     gameLogic.nextLevel();
                 }
@@ -356,7 +359,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         }
         else if(restartButtonRect.contains(p)){
             message = "Restarting Game...";
-            gameLogic.ballReset();
+            gameLogic.actorReset();
             gameLogic.wallReset();
             showPauseMenu = false;
             repaint();
