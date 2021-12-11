@@ -85,7 +85,10 @@ public class Highscore {
     private void createPanel() {
         highscorePanel = new JDialog();
         highscorePanel.setSize(50, 200);
-        highscorePanel.setVisible(false);
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (size.width - highscorePanel.getWidth()) / 2;
+        int y = (size.height - highscorePanel.getHeight()) / 2;
+        highscorePanel.setLocation(x,y);
         highscorePanel.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
         highscorePanel.setLayout(new GridLayout(11,1));
         highscorePanel.setBackground(Theme.COL00);

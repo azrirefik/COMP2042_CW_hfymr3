@@ -50,7 +50,7 @@ public class GameLogic {
     private boolean ballLost;
 
     private int score;
-    private Highscore highscore;
+    public static final Highscore highscore = new Highscore();
 
     public GameLogic(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
@@ -79,8 +79,6 @@ public class GameLogic {
         player = new Player((Point) ballPos.clone(),150,10, drawArea);
 
         area = drawArea;
-
-        highscore = new Highscore();
     }
 
     public void gameReset () {
