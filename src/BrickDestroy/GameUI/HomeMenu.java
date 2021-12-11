@@ -20,6 +20,7 @@ package BrickDestroy.GameUI;
 import BrickDestroy.GameLogic;
 import BrickDestroy.GameUI.GameFrame;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -27,6 +28,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 
 public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener {
@@ -133,6 +136,8 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.translate(-x,-y);
         g2d.setFont(prevFont);
         g2d.setColor(prevColor);
+
+        drawPicture(g2d);
     }
 
     private void drawContainer(Graphics2D g2d){
@@ -188,6 +193,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
 
     }
+
 
     private void drawButton(Graphics2D g2d){
 
@@ -254,8 +260,8 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
         infoButton.setLocation(x,y);
 
-        x = (int)(infoButton.getWidth() - mTxtRect.getWidth()) / 2;
-        y = (int)(infoButton.getHeight() - mTxtRect.getHeight()) / 2;
+        x = (int)(infoButton.getWidth() - iTxtRect.getWidth()) / 2;
+        y = (int)(infoButton.getHeight() - iTxtRect.getHeight()) / 2;
 
         x += infoButton.x;
         y += infoButton.y + (highscoreButton.height * 0.9);
@@ -299,6 +305,19 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             g2d.drawString(MENU_TEXT,x,y);
         }
 
+    }
+
+    private void drawPicture(Graphics2D g2d) {
+        try {
+            BufferedImage img = ImageIO.read(new File("src/BrickDestroy/Asset/HomePicture.png"));
+            int x = img.getWidth();
+            int y = img.getHeight();
+            float ratio = (float)x/y;
+            y  = 300 - 20;
+            g2d.drawImage(img, 10, 10, (int)(y*ratio), y,  null);
+        } catch ( Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
