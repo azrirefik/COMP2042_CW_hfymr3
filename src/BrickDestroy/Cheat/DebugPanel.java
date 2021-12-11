@@ -18,6 +18,7 @@
 package BrickDestroy.Cheat;
 
 import BrickDestroy.GameLogic;
+import BrickDestroy.GameUI.Theme;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
@@ -28,7 +29,7 @@ import java.awt.event.ActionListener;
 
 public class DebugPanel extends JPanel {
 
-    private static final Color DEF_BKG = Color.WHITE;
+    private static final Color DEF_BKG = Theme.COL00;
 
 
     private JButton skipLevel;

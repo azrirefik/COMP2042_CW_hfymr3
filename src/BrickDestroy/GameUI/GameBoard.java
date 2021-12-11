@@ -37,13 +37,14 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private static final String EXIT = "Exit";
     private static final String PAUSE = "Pause Menu";
     private static final int TEXT_SIZE = 30;
-    private static final Color MENU_COLOR = new Color(0,255,0);
+    private static final Color MENU_COLOR = Theme.COL04;
 
 
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
 
-    private static final Color BG_COLOR = Color.WHITE;
+    private static final Color BG_COLOR = Theme.COL00;
+    private static final Color INFO_COLOR = Theme.COL06;
 
     private Timer gameTimer;
 
@@ -71,7 +72,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
 
 
-        menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
+        menuFont = new Font(Theme.font,Font.PLAIN,TEXT_SIZE);
 
 
         this.initialize();
@@ -85,7 +86,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         gameTimer = new Timer(10,e ->{
             gameLogic.move();
             gameLogic.findImpacts();
-            message = String.format("Bricks: %d Balls %d", gameLogic.getBrickCount(), gameLogic.getBallCount());
+            message = String.format("Level:%d  Bricks:%d  Balls:%d", gameLogic.getLevel(), gameLogic.getBrickCount(), gameLogic.getBallCount());
             if(gameLogic.isBallLost()){
                 if(gameLogic.ballEnd()){
                     gameLogic.wallReset();
@@ -131,8 +132,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         clear(g2d);
 
-        g2d.setColor(Color.BLUE);
-        g2d.drawString(message,250,225);
+        g2d.setColor(INFO_COLOR);
+        g2d.drawString(message,(DEF_WIDTH-5*message.length())/2,225);
 
         drawBall(gameLogic.ball,g2d);
 

@@ -311,4 +311,8 @@ public class GameLogic {
         return  out;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
 }

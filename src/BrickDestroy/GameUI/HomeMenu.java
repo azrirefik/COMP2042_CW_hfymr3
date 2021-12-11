@@ -36,14 +36,14 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private static final String START_TEXT = "Start";
     private static final String MENU_TEXT = "Exit";
 
-    private static final Color BG_COLOR = Color.GREEN.darker();
-    private static final Color BORDER_COLOR = new Color(200,8,21); //Venetian Red
-    private static final Color DASH_BORDER_COLOR = new  Color(255, 216, 0);//school bus yellow
-    private static final Color TEXT_COLOR = new Color(16, 52, 166);//egyptian blue
-    private static final Color CLICKED_BUTTON_COLOR = BG_COLOR.brighter();
-    private static final Color CLICKED_TEXT = Color.WHITE;
-    private static final int BORDER_SIZE = 5;
-    private static final float[] DASHES = {12,6};
+    private static final Color BG_COLOR = Theme.COLBG;
+    private static final Color BORDER_COLOR = Theme.COL00;
+    private static final Color DASH_BORDER_COLOR = Theme.COL04;
+    private static final Color TEXT_COLOR = Theme.COL03;
+    private static final Color CLICKED_BUTTON_COLOR = Theme.COL01;
+    private static final Color CLICKED_TEXT = Theme.COL01;
+    private static final int BORDER_SIZE = 10;
+    private static final float[] DASHES = {10,10};
 
     private Rectangle menuFace;
     private Rectangle startButton;
@@ -85,10 +85,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         borderStoke = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND,0,DASHES,0);
         borderStoke_noDashes = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
 
-        greetingsFont = new Font("Noto Mono",Font.PLAIN,25);
-        gameTitleFont = new Font("Noto Mono",Font.BOLD,40);
-        creditsFont = new Font("Monospaced",Font.PLAIN,10);
-        buttonFont = new Font("Monospaced",Font.PLAIN,startButton.height-2);
+        greetingsFont = new Font(Theme.font,Font.PLAIN,16);
+        gameTitleFont = new Font(Theme.font,Font.BOLD,24);
+        creditsFont = new Font(Theme.font,Font.PLAIN,16);
+        buttonFont = new Font(Theme.font,Font.PLAIN,startButton.height-2);
 
 
 

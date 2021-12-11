@@ -1,5 +1,7 @@
 package BrickDestroy.GameElement;
 
+import BrickDestroy.GameUI.Theme;
+
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
@@ -9,8 +11,8 @@ public class CementBrick extends Brick {
 
 
     private static final String NAME = "Cement Brick";
-    private static final Color DEF_INNER = new Color(147, 147, 147);
-    private static final Color DEF_BORDER = new Color(217, 199, 175);
+    private static final Color DEF_INNER = Theme.COLBG.brighter().brighter().brighter();
+    private static final Color DEF_BORDER = Theme.COL00;
     private static final int CEMENT_STRENGTH = 2;
 
     private Crack crack;
