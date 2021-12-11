@@ -34,6 +34,7 @@ public class DebugPanel extends JPanel {
 
     private JButton skipLevel;
     private JButton resetBalls;
+    private JButton clearBricks;
 
     private JSlider ballXSpeed;
     private JSlider ballYSpeed;
@@ -48,12 +49,14 @@ public class DebugPanel extends JPanel {
 
         skipLevel = makeButton("Skip Level",e -> gameLogic.nextLevel());
         resetBalls = makeButton("Reset Balls",e -> gameLogic.resetBallCount());
+        clearBricks = makeButton("Clear Bricks", e -> gameLogic.clearBricks());
 
         ballXSpeed = makeSlider(-4,4,e -> gameLogic.setBallXSpeed(ballXSpeed.getValue()));
         ballYSpeed = makeSlider(-4,4,e -> gameLogic.setBallYSpeed(ballYSpeed.getValue()));
 
         this.add(skipLevel);
         this.add(resetBalls);
+        this.add(clearBricks);
 
         this.add(ballXSpeed);
         this.add(ballYSpeed);
@@ -62,7 +65,7 @@ public class DebugPanel extends JPanel {
 
     private void initialize(){
         this.setBackground(DEF_BKG);
-        this.setLayout(new GridLayout(2,2));
+        this.setLayout(new GridLayout(3,2));
     }
 
     private JButton makeButton(String title, ActionListener e){

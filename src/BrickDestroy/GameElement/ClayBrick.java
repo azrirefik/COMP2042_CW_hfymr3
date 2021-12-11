@@ -16,6 +16,7 @@ public class ClayBrick extends Brick {
     private static final Color DEF_INNER = Theme.COL01;
     private static final Color DEF_BORDER = Theme.COL00;
     private static final int CLAY_STRENGTH = 1;
+    private static final int COST = 1;
 
 
 
@@ -36,5 +37,8 @@ public class ClayBrick extends Brick {
         return super.brickFace;
     }
 
+    public int getCost() {
+        return COST;
+    }
 
 }

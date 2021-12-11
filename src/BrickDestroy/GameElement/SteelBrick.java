@@ -32,6 +32,8 @@ public class SteelBrick extends Brick {
     private static final int STEEL_STRENGTH = 1;
     private static final double STEEL_PROBABILITY = 0.4;
 
+    private static final int COST = 3;
+
     private Random rnd;
     private Shape brickFace;
 
@@ -63,6 +65,10 @@ public class SteelBrick extends Brick {
         if(rnd.nextDouble() < STEEL_PROBABILITY){
             super.impact();
         }
+    }
+
+    public int getCost() {
+        return COST;
     }
 
 }

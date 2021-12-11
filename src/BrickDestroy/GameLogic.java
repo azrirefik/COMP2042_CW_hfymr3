@@ -18,7 +18,9 @@
 package BrickDestroy;
 
 import BrickDestroy.GameElement.*;
+import BrickDestroy.GameUI.Highscore;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
@@ -47,12 +49,16 @@ public class GameLogic {
     private int ballCount;
     private boolean ballLost;
 
-    public GameLogic(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
+    private int score;
+    private Highscore highscore;
+
+    public GameLogic(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos, JFrame owner){
 
         this.startPoint = new Point(ballPos);
 
         levels = makeLevels(drawArea,brickCount,lineCount,brickDimensionRatio);
         level = 0;
+        score = 0;
 
         ballCount = 3;
         ballLost = false;
@@ -74,7 +80,7 @@ public class GameLogic {
 
         area = drawArea;
 
-
+        highscore = new Highscore(owner);
     }
 
     public void gameReset () {
@@ -84,6 +90,7 @@ public class GameLogic {
         bricks = levels[level++];
         this.brickCount = bricks.length;
         ballCount = 3;
+        score = 0;
     }
 
     private Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){
@@ -217,18 +224,34 @@ public class GameLogic {
                 //Vertical Impact
                 case Brick.UP_IMPACT:
                     ball.reverseY();
-                    return b.setImpact(ball.down, Brick.Crack.UP);
+                    if (b.setImpact(ball.down, Brick.Crack.UP)) {
+                        score += b.getCost();
+                        return true;
+                    }
+                    break;
                 case Brick.DOWN_IMPACT:
                     ball.reverseY();
-                    return b.setImpact(ball.up,Brick.Crack.DOWN);
+                    if (b.setImpact(ball.up,Brick.Crack.DOWN)) {
+                        score += b.getCost();
+                        return true;
+                    }
+                    break;
 
                 //Horizontal Impact
                 case Brick.LEFT_IMPACT:
                     ball.reverseX();
-                    return b.setImpact(ball.right,Brick.Crack.RIGHT);
+                    if (b.setImpact(ball.right,Brick.Crack.RIGHT)) {
+                        score += b.getCost();
+                        return true;
+                    }
+                    break;
                 case Brick.RIGHT_IMPACT:
                     ball.reverseX();
-                    return b.setImpact(ball.left,Brick.Crack.LEFT);
+                    if (b.setImpact(ball.left,Brick.Crack.LEFT)) {
+                        score += b.getCost();
+                        return true;
+                    }
+                    break;
             }
         }
         return false;
@@ -303,6 +326,14 @@ public class GameLogic {
         ballCount = 3;
     }
 
+    public void clearBricks() {
+        for(Brick b : bricks) {
+            b.forceBroken();
+            score += b.getCost();
+        }
+        brickCount = 0;
+    }
+
     private Brick makeBrick(Point point, Dimension size, int type){
         Brick out;
         switch(type){
@@ -323,6 +354,18 @@ public class GameLogic {
 
     public int getLevel() {
         return level;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void saveHighscore() {
+         highscore.addScore(score);
+    }
+
+    public void showHighscores() {
+        highscore.viewPanel();
     }
 
 }

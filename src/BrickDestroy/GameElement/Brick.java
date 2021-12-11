@@ -23,7 +23,6 @@ abstract public class Brick  {
     public static final int RIGHT_IMPACT = 400;
 
 
-
     public class Crack{
 
         private static final int CRACK_SECTIONS = 3;
@@ -200,6 +199,7 @@ abstract public class Brick  {
     }
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
+    public abstract int getCost();
 
     public  boolean setImpact(Point2D point , int dir){
         if(broken)
@@ -250,6 +250,10 @@ abstract public class Brick  {
         broken = (strength == 0);
     }
 
+
+    public void forceBroken() {
+        broken = true;
+    }
 
 
 }

@@ -74,10 +74,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         menuFont = new Font(Theme.font,Font.PLAIN,30);
         guideFont = new Font(Theme.font,Font.PLAIN,20);
         keyFont = new Font(Theme.font,Font.PLAIN,16);
-
         this.initialize();
         message = "";
-        gameLogic = new GameLogic(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
+        gameLogic = new GameLogic(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430), owner);
+        gameLogic.showHighscores();
 
         debugConsole = new DebugConsole(owner, gameLogic,this);
         //initialize the first level
@@ -88,30 +88,34 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             gameLogic.findImpacts();
 
             if(gameLogic.isBallLost()){
+                gameTimer.stop();
                 if(gameLogic.ballEnd()){
                     gameLogic.wallReset();
                     message = "Game over";
+                    gameLogic.saveHighscore();
+                    gameLogic.showHighscores();
                     gameLogic.gameReset();
                 } else {
                     gameLogic.actorReset();
-                    message = String.format("Level:%d  Bricks:%d  Balls:%d", gameLogic.getLevel(), gameLogic.getBrickCount(), gameLogic.getBallCount());
+                    message = currentStats();
                 }
-                gameTimer.stop();
             }
             else if(gameLogic.isDone()){
+                gameTimer.stop();
                 if(gameLogic.hasLevel()){
-                    message = "Go to Next Level";
-                    gameTimer.stop();
+                    message = "Congrats. Welcome to New Level!";
                     gameLogic.actorReset();
                     gameLogic.wallReset();
                     gameLogic.nextLevel();
                 }
                 else{
-                    message = "ALL WALLS DESTROYED";
-                    gameTimer.stop();
+                    message = "ALL LEVELS CLEARED!";
+                    gameLogic.saveHighscore();
+                    gameLogic.showHighscores();
+                    gameLogic.gameReset();
                 }
             } else {
-                message = String.format("Level:%d  Bricks:%d  Balls:%d", gameLogic.getLevel(), gameLogic.getBrickCount(), gameLogic.getBallCount());
+                message = currentStats();
             }
 
             repaint();
@@ -278,6 +282,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setColor(tmpColor);
     }
 
+    private void toggleHighscorePanel () {
+
+    }
+
     /**
      * Draw keybinding information on screen.
      * @param g2d screen
@@ -415,5 +423,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         repaint();
     }
 
+    private String currentStats() {
+        return String.format("Level:%d  Bricks:%d  Balls:%d  Score:%d", gameLogic.getLevel(), gameLogic.getBrickCount(), gameLogic.getBallCount(), gameLogic.getScore());
+    }
 
 }

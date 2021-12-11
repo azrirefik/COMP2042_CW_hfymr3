@@ -14,6 +14,7 @@ public class CementBrick extends Brick {
     private static final Color DEF_INNER = Theme.COLBG.brighter().brighter().brighter();
     private static final Color DEF_BORDER = Theme.COL00;
     private static final int CEMENT_STRENGTH = 2;
+    private static final int COST = 2;
 
     private Crack crack;
     private Shape brickFace;
@@ -61,5 +62,9 @@ public class CementBrick extends Brick {
         super.repair();
         crack.reset();
         brickFace = super.brickFace;
+    }
+
+    public int getCost() {
+        return COST;
     }
 }
