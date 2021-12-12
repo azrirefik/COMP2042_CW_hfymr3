@@ -3,16 +3,11 @@ package BrickDestroy.GameUI;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Highscore {
-    private final String filename = "highscore.dat";
+    private final String filename = "src/BrickDestroy/Asset/highscore.dat";
     private final int MAX_HIGHSCORE = 10;
     ArrayList<Integer> scores;
 
