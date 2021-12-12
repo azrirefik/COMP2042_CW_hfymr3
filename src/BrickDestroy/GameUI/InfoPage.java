@@ -17,6 +17,7 @@ public class InfoPage extends JDialog {
         appendContent("<tr><th>A</th><td>move the player right</td></tr>");
         appendContent("<tr><th>D</th><td>move the player right</td></tr>");
         appendContent("<tr><th>ESC</th><td>enter/exit pause menu</td></tr></table>");
+        appendContent("Note that different type of bricks have different characteristics.");
         appendContent("The game automatically pause if the frame loses focus");
 
         this.setSize(700,350);
