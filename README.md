@@ -13,7 +13,7 @@ Note that different type of bricks have different characteristics.
 The game automatically pause if the frame loses focus.
 
 
-Changes done:
+### Changes done:
 1. group classes into 3 packages:
    1. game ui : user interface and graphics stuff 
    2. game element: element and objects of the game content 
